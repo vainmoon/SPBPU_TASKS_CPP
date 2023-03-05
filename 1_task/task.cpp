@@ -16,13 +16,13 @@ void getOut(ofstream& output, vector <float> solution)
 	switch (number_solutions)
 	{
 	case 1:
-		output << "Óðàâíåíèå èìååò òîëüêî îäíî ðåøåíèå:\n" << solution.at(0);
+		output << "Ð£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð¾ Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ:\n" << solution.at(0);
 		break;
 	case 2:
-		output << "Óðàâíåíèå èìååò äâà ðåøåíèÿ:\n" << solution.at(0) << endl << solution.at(1);
+		output << "Ð£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð²Ð° Ñ€ÐµÑˆÐµÐ½Ð¸Ñ:\n" << solution.at(0) << endl << solution.at(1);
 		break;
 	default:
-		output << "Óðàâíåíèå íå èìååò âåùåñòâåííûõ êîðíåé";
+		output << "Ð£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ð²ÐµÑ‰ÐµÑÑ‚Ð²ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ¾Ñ€Ð½ÐµÐ¹";
 		break;
 	}
 }
@@ -47,7 +47,6 @@ void getOut(ofstream& output, vector <float> solution)
 
 void main()
 {
-	setlocale(LC_ALL, "Russian");
 	vector <float> coefficients(3);
 	vector <float> solution;
 	ifstream input("input.txt");
