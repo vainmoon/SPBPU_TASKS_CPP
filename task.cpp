@@ -1,16 +1,26 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <cmath>
 
 using namespace std;
 
+bool quadraticTest(const vector <float> &coefficients)
+{
+	return coefficients.at(0) != 0 ? 1 : 0;
+}
+
+void equationError(ofstream& output)
+{
+	output << "Ошибка: введено не квадратное уравнение";
+}
+
 void getInput(ifstream& input, vector <float> &coefficients)
 {
 	input >> coefficients.at(0) >> coefficients.at(1) >> coefficients.at(2);
 }
 	
-void getOut(ofstream& output, vector <float> solution)
+void getOut(ofstream& output, const vector <float> &solution)
 {
 	int number_solutions = solution.size();
 	switch (number_solutions)
@@ -27,21 +37,21 @@ void getOut(ofstream& output, vector <float> solution)
 	}
 }
 
- float findDiscriminant(vector <float> coefficients)
+ float findDiscriminant(const vector <float> &coefficients)
 {
 	 return pow(coefficients.at(1), 2) - 4 * coefficients.at(0) * coefficients.at(2);
 }
 
- void findSolution(vector <float> coefficients, float discriminant, vector <float> &solution)
+ void findSolution(const vector <float> &coefficients, const float &discriminant, vector <float> &solution)
 {
 	 if (discriminant == 0)
 	 {
-		 solution.push_back(-1 * coefficients.at(1) / (2 * coefficients.at(0)));
+		 solution.push_back(-coefficients.at(1) / (2 * coefficients.at(0)));
 	 }
 	 else if (discriminant > 0)
 	 {
-		 solution.push_back((-1 * coefficients.at(1) + sqrt(discriminant)) / (2 * coefficients.at(0)));
-		 solution.push_back((-1 * coefficients.at(1) - sqrt(discriminant)) / (2 * coefficients.at(0)));
+		 solution.push_back((-coefficients.at(1) + sqrt(discriminant)) / (2 * coefficients.at(0)));
+		 solution.push_back((-coefficients.at(1) - sqrt(discriminant)) / (2 * coefficients.at(0)));
 	 }
 }
 
@@ -53,9 +63,16 @@ void main()
 	ofstream output("output.txt");
 
 	getInput(input, coefficients);
+	
+	if (quadraticTest(coefficients))
+	{
+		float discriminant = findDiscriminant(coefficients);
+		findSolution(coefficients, discriminant, solution);
 
-	float discriminant = findDiscriminant(coefficients);
-	findSolution(coefficients, discriminant, solution);
-
-	getOut(output, solution);
+		getOut(output, solution);
+	}
+	else
+	{
+		equationError(output);
+	}
 }
