@@ -16,7 +16,7 @@ void getOut(ofstream& output, vector <float> solution)
 	switch (number_solutions)
 	{
 	case 1:
-		output << "Уравнение имеет только одно реие:\n" << solution.at(0);
+		output << "Уравнение имеет только одно решение:\n" << solution.at(0);
 		break;
 	case 2:
 		output << "Уравнение имеет два решения:\n" << solution.at(0) << endl << solution.at(1);
@@ -47,6 +47,7 @@ void getOut(ofstream& output, vector <float> solution)
 
 void main()
 {
+	setlocale(LC_ALL, "Russian");
 	vector <float> coefficients(3);
 	vector <float> solution;
 	ifstream input("input.txt");
