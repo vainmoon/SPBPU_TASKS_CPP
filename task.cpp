@@ -7,7 +7,7 @@ using namespace std;
 
 bool quadraticTest(const vector <float> &coefficients)
 {
-	return coefficients.at(0) != 0 ? 1 : 0;
+	return coefficients.at(0) != 0 ? true : false;
 }
 
 void equationError(ofstream& output)
@@ -42,7 +42,7 @@ void getOut(ofstream& output, const vector <float> &solution)
 	 return pow(coefficients.at(1), 2) - 4 * coefficients.at(0) * coefficients.at(2);
 }
 
- void findSolution(const vector <float> &coefficients, const float &discriminant, vector <float> &solution)
+ void findSolution(const vector <float> &coefficients, float discriminant, vector <float> &solution)
 {
 	 if (discriminant == 0)
 	 {
